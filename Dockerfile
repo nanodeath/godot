@@ -6,7 +6,7 @@ ARG GODOT_VERSION=2.1.2
 ARG GODOT_VARIANT=stable
 
 RUN apt-get update \
-    && apt-get install -y wget unzip \
+    && apt-get install -y wget unzip ca-certificates \
     && wget \
 "http://download.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-${GODOT_VARIANT}_linux_server.64.zip" \
 "http://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-${GODOT_VARIANT}_export_templates.tpz" \
