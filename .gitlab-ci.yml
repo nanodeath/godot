@@ -16,3 +16,8 @@ build:windows:
     - godot -path <path to engine.cfg> -export_debug "Windows Desktop" game.exe
   only:
     - master
+
+build:macosx:
+  stage: build
+  script:
+    - godot -path <path to engine.cfg> -export_debug "Mac OSX" game.zip
