@@ -8,7 +8,7 @@ image: nanodeath/godot-docker:latest
 
 # DON'T FORGET to set your BUTLER_API_KEY otherwise your deploy won't work.
 # GitLab secret variables: https://docs.gitlab.com/ce/ci/variables/README.html#secret-variables
-# itch.io authentication: https://itch.io/docs/butler/login.html
+# itch.io authentication: https://itch.io/docs/butler/login.html#running-butler-from-ci-builds-travis-ci-gitlab-ci-etc
 
 stages:
   - build
