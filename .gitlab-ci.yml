@@ -1,7 +1,18 @@
 image: nanodeath/godot-docker:latest
 
+# -path is optional if <path to engine.cfg> is, in fact, engine.cfg.
+# Don't forget to search-replace "user/game" with your itch.io username and game id.
+
+# Godot docs: https://godot.readthedocs.io/en/stable/learning/editor/command_line_tutorial.html
+# itch.io butler docs: https://itch.io/docs/butler/pushing.html
+
+# DON'T FORGET to set your BUTLER_API_KEY otherwise your deploy won't work.
+# GitLab secret variables: https://docs.gitlab.com/ce/ci/variables/README.html#secret-variables
+# itch.io authentication: https://itch.io/docs/butler/login.html
+
 stages:
   - build
+  - deploy
 
 build:linux:
   stage: build
@@ -9,6 +20,9 @@ build:linux:
     - godot -path <path to engine.cfg> -export_debug "Linux X11" game
   only:
     - master
+  artifacts:
+    paths:
+      - game
 
 build:windows:
   stage: build
@@ -16,8 +30,41 @@ build:windows:
     - godot -path <path to engine.cfg> -export_debug "Windows Desktop" game.exe
   only:
     - master
+  artifacts:
+    paths:
+      - game.exe
 
 build:macosx:
   stage: build
   script:
     - godot -path <path to engine.cfg> -export_debug "Mac OSX" game.zip
+  artifacts:
+    paths:
+      - game.zip
+
+itchio:linux:
+  stage: deploy
+  script:
+    - butler push game user/game:linux64
+  only:
+    - master
+  dependencies:
+    - build:linux
+
+itchio:windows:
+  stage: deploy
+  script:
+    - butler push game.exe user/game:windows
+  only:
+    - master
+  dependencies:
+    - build:windows
+
+itchio:macosx:
+  stage: deploy
+  script:
+    - butler push game.zip user/game:mac64
+  only:
+    - master
+  dependencies:
+    - build:macosx
