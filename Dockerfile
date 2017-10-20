@@ -2,7 +2,7 @@ FROM debian:jessie-slim
 
 MAINTAINER Max Aller <nanodeath@gmail.com>
 
-ARG GODOT_VERSION=2.1.2
+ARG GODOT_VERSION=2.1.4
 ARG GODOT_VARIANT=stable
 
 RUN apt-get update \
