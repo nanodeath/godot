@@ -1,3 +1,5 @@
+image: nanodeath/godot-docker:latest
+
 stages:
   - build
 
