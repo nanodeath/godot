@@ -1,6 +1,6 @@
 # Minimal Godot Engine Docker image
 
-This image is based on a minimal Alpine Linux image that includes glibc. It provides the official Linux server 64-bit 2.1.2-stable build of Godot Engine along with the official templates.
+This image is based on the slim version of the Debian jessie image. It provides the official Linux server 64-bit 2.1.4-stable build of Godot Engine along with the official templates.
 
 The primary application is for automating Godot Engine builds.
 
@@ -16,4 +16,5 @@ There is no need to register the runner first.
 
 ### Credits
 
-Rafał Zawadzki: https://hub.docker.com/r/bluszcz/godot/
+* maeb for the original image: https://github.com/maeb/godot
+* gdelgiud for the itch.io butler stuff: https://github.com/gdelgiud/godot
